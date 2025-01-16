@@ -31,5 +31,5 @@ public class UserInfo implements Serializable {
     @Schema(description="更新时间")
     private Date updatedAt;
     @Schema(description="是否删除")
-    private Integer deleted;
+    private Boolean deleted;
 }
