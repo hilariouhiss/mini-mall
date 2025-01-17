@@ -13,6 +13,11 @@
     <description>commons</description>
 
     <dependencies>
+        <!--log4j2-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
         <!--mapstruct-->
         <dependency>
             <groupId>org.mapstruct</groupId>
@@ -78,10 +83,14 @@
             <artifactId>mysql-connector-j</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <!--mybatis-->
+        <!--Mybatis-Plus-->
         <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-jsqlparser</artifactId>
         </dependency>
         <!--<dependency>-->
         <!--    <groupId>com.alibaba.cloud</groupId>-->

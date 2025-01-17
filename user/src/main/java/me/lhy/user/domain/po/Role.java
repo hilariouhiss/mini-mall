@@ -1,16 +1,22 @@
 package me.lhy.user.domain.po;
 
 
+import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
-import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@TableName(excludeProperty = "serialVersionUID")
 public class Role implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -24,4 +30,15 @@ public class Role implements Serializable {
     private Date updatedAt;
     @Schema(description="是否删除")
     private Boolean deleted;
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                ", deleted=" + deleted +
+                '}';
+    }
 }

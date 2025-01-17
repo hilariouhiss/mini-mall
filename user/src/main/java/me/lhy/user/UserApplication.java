@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"me.lhy.user","me.lhy.commons"})
 @EnableDiscoveryClient // 开启服务注册与发现
 @MapperScan("me.lhy.user.mapper")
 public class UserApplication {

@@ -1,6 +1,6 @@
 package me.lhy.user.converter;
 
-import me.lhy.user.domain.dto.UserDTO;
+import me.lhy.user.domain.dto.UserDto;
 import me.lhy.user.domain.po.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
@@ -11,8 +11,8 @@ public interface Converter {
 
     Converter INSTANCE = Mappers.getMapper(Converter.class);
 
-    UserDTO toUserDTO(User user);
+    UserDto toUserDTO(User user);
 
-    User toUser(UserDTO userDTO);
+    User toUser(UserDto userDTO);
 
 }

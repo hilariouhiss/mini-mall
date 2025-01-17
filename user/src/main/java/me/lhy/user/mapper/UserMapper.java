@@ -1,30 +1,47 @@
 package me.lhy.user.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import me.lhy.user.domain.po.User;
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface UserMapper {
+public interface UserMapper extends BaseMapper<User> {
 
-    @Select("SELECT * FROM user where id = #{id}")
-    Optional<User> selectById(Long id);
-
-    @Select("SELECT * FROM user")
+    /**
+     * 查询所有用户
+     * @return 用户列表
+     */
+    @Select("select * from user")
     Optional<List<User>> selectAll();
 
-    @Select("SELECT * FROM user where username = #{name}")
-    Optional<User> selectByUsername(String name);
+    /**
+     * 根据id查询用户
+     * @param id 用户id
+     * @return 用户
+     */
+    @Select("select * from user where id = #{id}")
+    Optional<User> selectById(Long id);
 
-    @Insert("INSERT INTO user(id, username, password, phone, created_at, updated_at,deleted) " +
-            "VALUES(#{id}, #{username}, #{password}, #{phone}, now(), now(), 0)")
-    void insert(User user);
+    /**
+     * 根据用户名查询用户
+     * @param username 用户名
+     * @return 用户
+     */
+    @Select("select * from user where username = #{username}")
+    Optional<User> selectByUsername(String username);
 
-    // 逻辑删除，置 deleted 为 true
-    @Update("UPDATE user SET deleted = 1 WHERE id = #{id}")
-    void deleteById(Long id);
+    /**
+     * 根据手机号查询用户
+     * @param phoneNumber 用户手机号
+     * @return 用户
+     */
+    @Select("select * from user where phone_number = #{phoneNumber}")
+    Optional<User> selectByPhoneNumber(String phoneNumber);
+
+    @Select("select * from user where deleted = 1")
+    Optional<List<User>> selectAllDeleted();
+
 
 }

@@ -22,7 +22,7 @@
         <spring-boot.version>3.2.9</spring-boot.version>
         <spring-cloud.version>2023.0.3</spring-cloud.version>
         <spring-cloud-alibaba.version>2023.0.3.2</spring-cloud-alibaba.version>
-        <mybatis.version>3.0.4</mybatis.version>
+        <mybatis-plus.version>3.5.10.1</mybatis-plus.version>
         <sa-token.version>1.39.0</sa-token.version>
         <knife4j.version>4.4.0</knife4j.version>
         <mapstruct.version>1.6.3</mapstruct.version>
@@ -40,6 +40,17 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+                <version>${spring-boot.version}</version>
+            </dependency>
             <!--Spring CLoud Alibaba-->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
@@ -56,11 +67,13 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!--Mybatis-->
+            <!--Mybatis-Plus-->
             <dependency>
-                <groupId>org.mybatis.spring.boot</groupId>
-                <artifactId>mybatis-spring-boot-starter</artifactId>
-                <version>${mybatis.version}</version>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-bom</artifactId>
+                <version>${mybatis-plus.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <!--Knife4j-->
             <dependency>
@@ -92,11 +105,13 @@
                 <artifactId>sa-token-spring-boot3-starter</artifactId>
                 <version>${sa-token.version}</version>
             </dependency>
+            <!--mapstruct-->
             <dependency>
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct</artifactId>
                 <version>${mapstruct.version}</version>
             </dependency>
+            <!--druid-->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-3-starter</artifactId>
@@ -117,7 +132,7 @@
                     <encoding>UTF-8</encoding>
                     <parameters>true</parameters>
                     <annotationProcessorPaths>
-                        <!--lombok需要放在mapstruct前，否则maostruct无法生成实现类-->
+                        <!--lombok需要放在mapstruct前，否则mapstruct无法生成实现类-->
                         <!--是因为Lombok还未生成get、set方法-->
                         <path>
                             <groupId>org.projectlombok</groupId>

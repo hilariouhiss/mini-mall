@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class SaTokenConfigure {
+public class SaTokenConfig {
     // 注册 Sa-Token全局过滤器
     @Bean
     public SaReactorFilter getSaReactorFilter() {

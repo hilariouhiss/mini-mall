@@ -2,48 +2,52 @@ package me.lhy.user.service;
 
 
 import cn.dev33.satoken.stp.SaTokenInfo;
-import me.lhy.user.domain.dto.LoginDTO;
-import me.lhy.user.domain.dto.UserDTO;
+import me.lhy.user.domain.dto.UserDto;
 
 import java.util.List;
 
 public interface UserService {
 
 
-    public List<UserDTO> selectAll();
+    /**
+     * 查询所有未被标记删除的用户
+     * @return 用户列表
+     */
+    List<UserDto> selectAll();
 
     /**
      * 根据id查询用户
-     * @param id
-     * @return 用户
+     * @param id 用户id
+     * @return UserDto
      */
-    public UserDTO selectById(Long id);
+    UserDto selectById(Long id);
 
     /**
      * 根据用户名查询用户
-     * @param username
-     * @return 用户
+     * @param username 用户名
+     * @return UserDto
      */
-    public UserDTO selectByUsername(String username);
-
-    // TODO: 加密密码
+    UserDto selectByUsername(String username);
 
     /**
-     * 用户登录
-     * @param login
-     * @return 用户
+     * 使用用户名登录
+     * @param username 用户名
+     * @param password 密码
+     * @return token信息
      */
-    public SaTokenInfo login(LoginDTO login);
+    SaTokenInfo loginByUsername(String username, String password);
 
     /**
      * 用户注册
-     * @param user
+     * @param user 用户信息
      */
-    public void register(UserDTO user);
+    void register(UserDto user);
 
     /**
      * 根据id删除用户
-     * @param id
+     * @param id 用户id
      */
-    public void deleteById(Long id);
+    void deleteById(Long id);
+
+    SaTokenInfo loginByPhone(String phoneNumber, String password);
 }

@@ -1,16 +1,22 @@
 package me.lhy.user.domain.po;
 
 
+import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
-import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@TableName(excludeProperty = "serialVersionUID")
 public class Permission implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -28,4 +34,17 @@ public class Permission implements Serializable {
     private Date updatedAt;
     @Schema(description="是否删除")
     private Boolean deleted;
+
+    @Override
+    public String toString() {
+        return "Permission{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", url='" + url + '\'' +
+                ", description='" + description + '\'' +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                ", deleted=" + deleted +
+                '}';
+    }
 }
