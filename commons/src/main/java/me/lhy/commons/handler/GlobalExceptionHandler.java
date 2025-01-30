@@ -1,11 +1,12 @@
 package me.lhy.commons.handler;
 
 import lombok.extern.slf4j.Slf4j;
-import me.lhy.commons.Result;
-import me.lhy.commons.exception.DataNotFoundException;
+import me.lhy.commons.util.Result;
 import me.lhy.commons.exception.UserMarkedAsDeletedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import java.util.NoSuchElementException;
 
 @RestControllerAdvice
 @Slf4j
@@ -17,8 +18,8 @@ public class GlobalExceptionHandler {
         return Result.fail(e.getMessage());
     }
 
-    @ExceptionHandler(DataNotFoundException.class)
-    public Result<Void> handleDataNotFoundException(DataNotFoundException e) {
+    @ExceptionHandler(NoSuchElementException.class)
+    public Result<Void> handleNoSuchElementException(NoSuchElementException e) {
         log.info("未找到数据：{}", e.getMessage());
         return Result.fail(e.getMessage());
     }

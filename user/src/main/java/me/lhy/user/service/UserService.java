@@ -2,6 +2,7 @@ package me.lhy.user.service;
 
 
 import cn.dev33.satoken.stp.SaTokenInfo;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import me.lhy.user.domain.dto.UserDto;
 
 import java.util.List;
@@ -10,22 +11,24 @@ public interface UserService {
 
 
     /**
-     * 查询所有未被标记删除的用户
+     * 分页查询所有用户
+     * @param currentPage 当前页
+     * @param pageSize 每页大小
      * @return 用户列表
      */
-    List<UserDto> selectAll();
+    Page<UserDto> selectAll(Integer currentPage, Integer pageSize);
 
     /**
      * 根据id查询用户
      * @param id 用户id
-     * @return UserDto
+     * @return 用户列表
      */
     UserDto selectById(Long id);
 
     /**
      * 根据用户名查询用户
      * @param username 用户名
-     * @return UserDto
+     * @return 用户列表
      */
     UserDto selectByUsername(String username);
 
@@ -41,7 +44,7 @@ public interface UserService {
      * 用户注册
      * @param user 用户信息
      */
-    void register(UserDto user);
+    void add(UserDto user);
 
     /**
      * 根据id删除用户
@@ -49,5 +52,18 @@ public interface UserService {
      */
     void deleteById(Long id);
 
+    /**
+     * 通过手机号登录
+     * @param phoneNumber 手机号
+     * @param password 密码
+     * @return token信息
+     */
     SaTokenInfo loginByPhone(String phoneNumber, String password);
+
+
+    /**
+     * 通过id更新用户信息
+     * @param user 新的用户信息
+     */
+    void updateById(UserDto user);
 }

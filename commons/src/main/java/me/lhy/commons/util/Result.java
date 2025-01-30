@@ -1,4 +1,4 @@
-package me.lhy.commons;
+package me.lhy.commons.util;
 
 
 import lombok.Getter;

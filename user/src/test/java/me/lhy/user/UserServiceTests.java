@@ -13,7 +13,7 @@ public class UserServiceTests {
     private UserService userService;
 
     @Test
-    public void testRegister() {
+    public void testAddUser() {
         // 创建用户
         UserDto userDto = new UserDto();
         // 设置用户名和密码
@@ -21,6 +21,6 @@ public class UserServiceTests {
         userDto.setPassword("asdfghjkl");
 
         // 注册
-        userService.register(userDto);
+        userService.add(userDto);
     }
 }
