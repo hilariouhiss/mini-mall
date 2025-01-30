@@ -8,7 +8,6 @@ import me.lhy.user.mapper.PermissionMapper;
 import me.lhy.user.service.PermissionService;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service("permissionService")

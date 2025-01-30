@@ -5,8 +5,6 @@ import cn.dev33.satoken.stp.SaTokenInfo;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import me.lhy.user.domain.dto.UserDto;
 
-import java.util.List;
-
 public interface UserService {
 
 
