@@ -1,14 +1,18 @@
 package me.lhy.user.domain.po;
 
 
-import java.io.Serial;
-import java.io.Serializable;
-import java.util.Date;
-
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.io.Serial;
+import java.io.Serializable;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -27,15 +31,17 @@ public class UserRole implements Serializable {
     @Schema(description = "角色id")
     private Long roleId;
 
-    @Schema(description = "创建时间")
+    @Schema(description="创建时间")
+    @TableField(fill = FieldFill.INSERT)
     private Date createdAt;
 
-    @Schema(description = "更新时间")
+    @Schema(description="更新时间")
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date updatedAt;
 
-    @Schema(description = "是否删除")
+    @Schema(description="是否删除")
     @TableLogic
-    private Integer deleted;
+    private Boolean deleted;
 
     public UserRole(Long userId, Long roleId) {
         this.userId = userId;
