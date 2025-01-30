@@ -9,7 +9,9 @@ import lombok.extern.slf4j.Slf4j;
 import me.lhy.user.converter.Converter;
 import me.lhy.user.domain.dto.UserDto;
 import me.lhy.user.domain.po.User;
+import me.lhy.user.domain.po.UserRole;
 import me.lhy.user.mapper.UserMapper;
+import me.lhy.user.mapper.UserRoleMapper;
 import me.lhy.user.service.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +27,7 @@ import java.util.function.Supplier;
 public class UserServiceImpl implements UserService {
 
     private final UserMapper userMapper;
+    private final UserRoleMapper userRoleMapper;
 
     /**
      * 查询所有deleted = 0 的用户
@@ -103,6 +106,10 @@ public class UserServiceImpl implements UserService {
 
         log.info("插入用户，user: {}", user.getUsername());
         userMapper.insert(user);
+        // 插入用户角色关联表
+        UserRole userRole = new UserRole(user.getId(), 1L);
+        log.info("插入用户角色关联表，user_id: {}, role_id: {}", user.getId(), 1L);
+        userRoleMapper.insert(userRole);
     }
 
     /**

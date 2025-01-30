@@ -1,6 +1,7 @@
 package me.lhy.user.domain.po;
 
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -16,9 +17,9 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName(excludeProperty = "serialVersionUID")
 public class Permission implements Serializable {
     @Serial
+    @TableField(exist = false)
     private static final long serialVersionUID = 1L;
     @Schema(description="主键")
     private Long id;

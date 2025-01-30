@@ -16,9 +16,9 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName(excludeProperty = "serialVersionUID")
 public class User implements Serializable {
     @Serial
+    @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
     @Schema(description="主键")
