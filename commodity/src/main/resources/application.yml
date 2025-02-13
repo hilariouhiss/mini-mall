@@ -1,0 +1,22 @@
+server:
+  port: 0
+spring:
+  application:
+    name: commodity
+  cloud:
+    nacos:
+      config:
+        server-addr: ${NACOS_SERVER_ADDR}
+        file-extension: yaml
+      discovery:
+        server-addr: ${NACOS_SERVER_ADDR}
+  config:
+    import:
+      - optinal:nacos:commodity
+      - nacos:cache
+      - nacos:redis
+      - nacos:knife4j
+      - nacos:druid
+      - nacos:sa-token
+      - nacos:mybatis-plus
+

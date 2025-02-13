@@ -1,0 +1,16 @@
+server:
+  port: 0
+
+spring:
+  application:
+    name: order
+  cloud:
+    nacos:
+      config:
+        server-addr: ${NACOS_SERVER_ADDR}
+        file-extension: yaml
+      discovery:
+        server-addr: ${NACOS_SERVER_ADDR}
+  config:
+    import:
+      - Optional:nacos:order
